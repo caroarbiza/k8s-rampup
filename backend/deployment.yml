@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-analyst-api
+      tier: backend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: movie-analyst-api
+        tier: backend
+        track: stable
+    spec:
+      containers:
+      - name: movie-analyst-api
+        image: caroarbiza/movie-backend:1
+        env:
+           - name: DB_HOST
+             value: "movies-db.cznapkmazsdc.us-east-1.rds.amazonaws.com"
+           - name: DB_USER
+             value: "applicationuser"
+           - name: DB_PASS
+             value: "applicationuser"
+           - name: DB_NAME
+             value: "movie_db"
+           - name: PORT
+             value: "3036"   
+        ports:
+        - containerPort: 3036
+
+
+
+

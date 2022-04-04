@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: movie-analyst
+      tier: frontend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: movie-analyst
+        tier: frontend
+        track: stable
+    spec:
+      containers:
+      - name: movie-analyst-ui
+        image: caroarbiza/movie-frontend:latest
+        env:
+           - name: PORT
+             value: "80"
+           - name: BACKEND_URL
+             value: "10.244.1.5:3036"
+        ports:
+        - containerPort: 80
+
+
