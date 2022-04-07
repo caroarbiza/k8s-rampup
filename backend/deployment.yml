@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: movie-analyst-api
-        image: caroarbiza/movie-backend:1
+        image: caroarbiza/movie-backend:1.2
         env:
            - name: DB_HOST
              value: "movies-db.cznapkmazsdc.us-east-1.rds.amazonaws.com"
