@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: movie-analyst-ui
-        image: caroarbiza/movie-frontend:latest
+        image: caroarbiza/movie-frontend:1.8
         env:
            - name: PORT
              value: "80"
